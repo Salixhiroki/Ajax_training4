@@ -1,0 +1,18 @@
+<%= debug @blog.user_id %>
+<%= debug @blog.favorite?( @blog, current_user) %>
+<%= favorite.user_id %>
+<%#= debug @favorite.user_id %>
+
+
+<%# @blog.favorite_user=1 %>
+
+<% if @blog.favorite?(@blog, current_user) %>
+  
+  <li class="like-off">
+    <%= link_to "いいねを外す", favorites_destroy_path(id: @blog.id), method: :delete, remote: true, class: "like-off-btn" %>
+  </li>
+<% else %>
+  <li class="like-on">
+    <%= link_to "いいね", favorites_create_path(blog_id: @blog.id), method: :post, remote: true, class: "like-on-btn"%>
+  </li>
+<% end %>
